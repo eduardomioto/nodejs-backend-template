@@ -46,3 +46,4 @@ junit.xml
 ### Docker Files:
 .docker/data/*
 .docker/api_mint/package
+/.docker/api_template/package
