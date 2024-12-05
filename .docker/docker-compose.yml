@@ -2,7 +2,7 @@ version: '3.8'
 name: template
 services:
   ## Postgre DB
-  mint_db:
+  db_template:
     build: db_template
     container_name: db_template
     environment:
@@ -11,7 +11,7 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - "./data/mint_db:/var/lib/postgresql/data"
+      - "./data/db_template:/var/lib/postgresql/data"
   ## Cache
   cache:
     image: redis:6.2-alpine
