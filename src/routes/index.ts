@@ -3,6 +3,6 @@ import templateRouter from './templateRoutes';
 
 const router = Router();
 
-router.use('/template', templateRouter);
+router.use('/entities', templateRouter);
 
 export default router;

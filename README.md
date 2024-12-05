@@ -1,48 +1,49 @@
-# nodejs-backend-template
+# Node Backend Template
 
-```
-npm init -y
-npm install --save-dev typescript
-nano tsconfig.json
-```
+[![Build and Deploy Docker Image](https://github.com/eduardomioto/nodejs-backend-template/actions/workflows/build.yml/badge.svg)](https://github.com/eduardomioto/nodejs-backend-template/actions/workflows/build.yml)
 
-```
-{
-  "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "target": "es6",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "dist"
-  },
-  "lib": ["es2015"]
+This project is a simple API built with Express in TypeScript, using Prisma as an ORM for PostgreSQL and Redis as a caching layer. The API supports CRUD operations for entities. Jest is used for testing the functionalities.
+
+## Features
+
+- CRUD Operations for Entities.
+- Caching with Redis to avoid unnecessary database requests.
+- Testing with Jest.
+
+## Getting Started
+
+### Architecture
+
+- Node.js + Express + Typescript application
+- PostgreSQL 15
+- Redis 6.2
+
+### Libs
+- Logging: winston (3.17.0)
+- Validation: yup (0.29.14)
+- Watcher: nodemon (3.1.7)
+- Packing: webpack (5.97.1)
+- Lint: eslint (9.16.0)
+- Testing: jest (29.7.0)
+- ORM: prisma (6.0.1)
 }
+
+### Starting
+```
+cd .docker
+docker compose up --build -d
 ```
 
+### API Documentation
+- http://localhost:8000/api-docs
+
+
+### Testing
 ```
-npm install --save express@4.17.1
-npm install -save-dev @types/express@4.17.1
-mkdir src
-nano src/app.ts
+yarn jest
 ```
 
+### Releasing
 ```
-import express from 'express';
-const app = express();
-const port = 3000;
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-app.listen(port, () => {
-  return console.log(`Express is listening at http://localhost:${port}`);
-});
-```
-
-```
-npx tsc
-npm install --save-dev eslint
-npm init @eslint/config@latest
+yarn release
 ```

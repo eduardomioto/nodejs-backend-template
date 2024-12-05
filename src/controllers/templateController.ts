@@ -3,7 +3,7 @@ import logger from '../logger';
 
 require('dotenv').config({ path: './src/.env' });
 
-export const getProducts = async (_req: Request, res: Response) => {
+export const getEntities = async (_req: Request, res: Response) => {
   try {
    
     res.json([]);
@@ -12,14 +12,14 @@ export const getProducts = async (_req: Request, res: Response) => {
   }
 };
 
-export const getProductsById = async (req: Request, res: Response) => {
+export const getEntityById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
 
   return res.json({});
 };
 
-export const createProduct = async (req: Request, res: Response) => {
+export const createEntity = async (req: Request, res: Response) => {
   try {
    
     res.status(201).json({});
@@ -29,7 +29,7 @@ export const createProduct = async (req: Request, res: Response) => {
   }
 };
 
-export const updateProduct = async (req: Request, res: Response) => {
+export const updateEntity = async (req: Request, res: Response) => {
   try {
     const { id, name } = req.body;
 
@@ -40,28 +40,8 @@ export const updateProduct = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteProduct = async (req: Request, res: Response) => {
+export const deleteEntity = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   return res.status(200).json({ status: 'ok' });
 };
-
-async function updateProductItem(product_id: any, name: any) {
-  let entry = {};
-
-  return entry;
-}
-
-async function getProduct(productId: string) {
-  let entry = {};
-
-  return entry;
-}
-
-function reject(err: Error) {
-  throw new Error('Function not implemented.');
-}
-
-function resolve(data: string | null | undefined) {
-  throw new Error('Function not implemented.');
-}

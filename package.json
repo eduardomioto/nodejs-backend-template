@@ -8,6 +8,7 @@
     "dev": "nodemon src/app.ts",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
+    "generate-swagger": "swagger-jsdoc -c swagger.config.ts -o ./swagger.json",
     "build": "tsc -p .",
     "start": "NODE_PATH=./dist node dist/app.js",
     "release": "yarn build && yarn pack && mv *.tgz .docker/api_template && cd .docker/api_template && tar zxvf *.tgz && yarn docker",
@@ -47,6 +48,8 @@
     "jest-mock": "^29.7.0",
     "jest-mock-extended": "^4.0.0-beta1",
     "redis-mock": "^0.56.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "ts-node": "^10.9.2",
     "webpack": "^5.97.1",
     "winston": "^3.17.0"
