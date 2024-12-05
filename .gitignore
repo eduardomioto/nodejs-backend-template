@@ -1,0 +1,48 @@
+### System and IDE Files:
+.DS_Store
+.vscode
+.eslintcache
+!.vscode/launch.json.default
+*.log
+
+### Dependency and Build Files:
+node_modules
+yarn-error.log
+dist
+build
+tmp
+pnpm-debug.log
+.pnpm-store
+*.tgz
+*.tsbuildinfo
+
+### Database Files:
+*tmp.db
+dev.db
+
+### Prisma-related Files:
+.prisma
+query-engine*
+migration-engine*
+schema-engine*
+libquery_engine*
+query_engine-windows.dll.node
+
+### Code Reproductions:
+esm
+reproductions/*
+!reproductions/basic-sqlite
+!reproductions/tracing
+!reproductions/pnpm-workspace.yaml
+
+### Test and Coverage Files:
+coverage
+junit.xml
+/output.txt
+
+### Environment-specific Files:
+.envrc.local
+
+### Docker Files:
+.docker/data/*
+.docker/api_mint/package

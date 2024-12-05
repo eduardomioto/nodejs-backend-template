@@ -1,0 +1,34 @@
+version: '3.8'
+name: template
+services:
+  ## Postgre DB
+  mint_db:
+    build: db_template
+    container_name: db_template
+    environment:
+      POSTGRES_PASSWORD: "adminadmin"
+      POSTGRES_DB: "db_template"
+    ports:
+      - "5433:5432"
+    volumes:
+      - "./data/mint_db:/var/lib/postgresql/data"
+  ## Cache
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes: 
+      - "./data/cache:/data"
+  # API
+  # api_template:
+  #   build: api_template
+  #   container_name: api_template
+  #   volumes:
+  #     - ./src:/home/node/app/src
+  #   expose:
+  #     - '3000'
+  #   ports:
+  #     - '8000:8000'
+  #   command: yarn dev

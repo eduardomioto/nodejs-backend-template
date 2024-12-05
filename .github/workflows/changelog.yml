@@ -1,0 +1,62 @@
+name: Update Changelog
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create changelog text
+        id: changelog
+        uses: loopwerk/tag-changelog@v1
+        with:
+          token: ${{ secrets.FUNCTIONAL_GITHUB_TOKEN }}
+          config_file: .github/workflows/changelog-config.js
+
+      - name: Write Changelog File
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: CHANGELOG.md
+          contents: |
+
+            ${{join(steps.changelog.outputs.changelog)}}
+
+          write-mode: append
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request
+        id: pull-request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.FUNCTIONAL_GITHUB_TOKEN }}
+          commit-message: "chore: Changelog Update"
+          branch: chore/changelog-update
+          delete-branch: true
+          title: "chore: Changelog Update"
+          base: main
+          body: |
+            Auto-generated with [create-pull-request][1]
+            [1]: https://github.com/peter-evans/create-pull-request
+          labels: |
+            changelog
+          add-paths: |
+            CHANGELOG.md
+
+      - name: Check outputs
+        if: ${{ steps.pull-request.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.pull-request.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.pull-request.outputs.pull-request-url }}"
+
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          GITHUB_TOKEN: ${{secrets.FUNCTIONAL_GITHUB_TOKEN }}
+          number: ${{ steps.pull-request.outputs.pull-request-number }}
+          labels: changelog
