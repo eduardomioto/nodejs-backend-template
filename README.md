@@ -47,3 +47,10 @@ yarn jest
 ```
 yarn release
 ```
+
+### Suggested Clients
+- Redis
+```
+npm install -g redis-commander
+redis-commander --redis-password <password>
+```

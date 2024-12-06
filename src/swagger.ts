@@ -11,7 +11,24 @@ const swaggerOptions = {
     servers: [{ url: 'http://localhost:8000/api' }],
     components: {
       schemas: {        
-        
+        Entity: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              description: 'The unique identifier for an entity',
+            },
+            name: {
+              type: 'string',
+              description: 'The name of the entity',
+            },
+            description: {
+              type: 'string',
+              description: 'A brief description of the entity',
+            },
+          },
+          required: ['id', 'name'],
+        },
       },
     },
   },

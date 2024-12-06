@@ -1,11 +1,12 @@
 import express, { type Express } from 'express';
 import bodyParser from 'body-parser';
 import routes from './routes';
-import RedisClient from './connection';
+import RedisClient from './config/connection';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './swagger';
+import { config } from 'dotenv'
 
-require('dotenv').config({ path: './src/.env' });
+config({ path: './src/.env' });
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -21,6 +22,5 @@ app.get('/', (_req, res) => {
 });
 
 app.listen(port, async () => {
-  await RedisClient();
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });

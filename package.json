@@ -13,7 +13,11 @@
     "start": "NODE_PATH=./dist node dist/app.js",
     "release": "yarn build && yarn pack && mv *.tgz .docker/api_template && cd .docker/api_template && tar zxvf *.tgz && yarn docker",
     "docker": "docker build .docker/api_template -f .docker/api_template/Dockerfile -t eduardomioto/api_template",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "db-deploy": "dotenv -e ./src/.env -- npx prisma migrate deploy",
+    "db-generate": "dotenv -e ./src/.env -- npx prisma migrate generate",
+    "db-update": "dotenv -e ./src/.env -- npx prisma migrate dev",
+    "redis-gui": "dotenv -e ./src/.env -- redis-commander --port 8001 --redis-password eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81 "
   },
   "keywords": [],
   "author": "",
@@ -25,6 +29,7 @@
     "@testing-library/react": "^16.0.1",
     "@types/express": "^4.17.1",
     "babel-jest": "^29.7.0",
+    "dotenv-cli": "^7.4.4",
     "eslint": "^9.16.0",
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.13.0",
