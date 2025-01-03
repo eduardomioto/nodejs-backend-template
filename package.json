@@ -46,7 +46,7 @@
     "@testing-library/dom": "^10.4.0",
     "@types/ioredis": "^4.28.10",
     "@types/ioredis-mock": "^8.2.5",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.10.2",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/yup": "^0.29.14",
     "body-parser": "^1.20.3",
